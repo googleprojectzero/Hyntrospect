@@ -1,0 +1,14 @@
+{
+    "Target": "C:\\Windows\\System32\\vmemulateddevices.dll",
+    "IOPortRead": [96, 97, 98, 100],
+    "IOPortWrite": [96, 97, 100],
+    "VMName": "VMName",
+    "VMUsername": "VMUsername",
+    "VMPassword":  "VMPassword",
+    "VMCheckpointName": "Mock",
+    "VMChipsecFilepath": "C:\\Users\\VMUsername\\Desktop\\chipsec\\chipsec_util.py",
+    "HostOutputDir": "C:\\Users\\HostUsername\\Desktop",
+    "MaxInputSize": 4096,
+    "MinInputSize": 100,
+    "MaxMutationRate": 0.5
+}
