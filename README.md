@@ -99,7 +99,7 @@ All arguments are mandatory except the last 5 arguments:
 - `HostIdaPath` is used to precompute the blocks' addresses on the target binary when no breakpoint list is found. It is though strongly advised to use the utilities to precompute the blocks beforehand and filter out unneeded blocks to keep the list minimal.
 - The default max mutation rate for input files is 0.3. 
 - `MinInputSize` and `MaxInputSize` set limits for the corpus files. Default values: 100 and 4096.
-- `VirtualDiskType` should be set if the fuzzer needs to run on mutated file systems (bi-dimensional fuzzing mode). The type should then be given as an argument: "vfd", "vhd", "iso", or a combination of those values in a list.
+- `VirtualDiskType` should be set if the fuzzer needs to run on mutated file systems (bi-dimensional fuzzing mode). The type should then be given as an argument: "vfd", "vhd", "iso", or a combination of those values in a list. If iso is selected, a "template.iso" should be added to data.
 
 ### Running the fuzzer
 

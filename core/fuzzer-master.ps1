@@ -110,15 +110,25 @@ if ($VirtualDiskType) {
     }
     $fsGeneratorPath = Join-Path $ScriptPath "fs-generator.ps1"
     if ($VirtualDiskType.GetType().Name -eq "String") {
-        Copy-Item "..\data\template.$VirtualDiskType" $fsCorpus
         $fsTemplate = Join-Path $fsCorpus "template.$VirtualDiskType"
+        if (Test-Path -Path "..\data\template.$VirtualDiskType") {
+            Copy-Item "..\data\template.$VirtualDiskType" $fsCorpus
+        }
+        else {
+            New-Item -Path $fsTemplate -Value "Test" -ItemType File -Force > $null
+        }
         $fscommand = "-HostOutputDir ""$HostOutputDir"" -VirtualDiskType $VirtualDiskType"
         $fsGenPid = Start-HelperProcess -script $fsGeneratorPath -commandline $fscommand
     } else {
         $fsTemplate = New-Object System.Collections.ArrayList
         $fscommands = New-Object System.Collections.ArrayList
         foreach ($format in $VirtualDiskType) {
-            Copy-Item "..\data\template.$format" $fsCorpus
+            if (Test-Path -Path "..\data\template.$VirtualDiskType") {
+                Copy-Item "..\data\template.$format" $fsCorpus
+            }
+            else {
+                New-Item -Path (Join-Path $fsCorpus "template.$format") -Value "Test" -ItemType File -Force > $null
+            }
             $fsTemplate.Add((Join-Path $fsCorpus "template.$format")) > $null
             $fscommand = "-HostOutputDir ""$HostOutputDir"" -VirtualDiskType $format"
             $fscommands.Add($fscommand) > $null
